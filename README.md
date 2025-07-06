@@ -82,7 +82,7 @@ $$
 公式：
 
 $$
-\bigwedge_{i=1}^{n-1} \bigwedge_{j=1}^{n-1} \bigwedge_{k=1}^{\min(n-i, n-j)} (\neg p(i,j) \lor \neg p(i+k, j+k))
+\bigwedge_{i=1}^{n} \bigwedge_{j=1}^{n-1} \bigwedge_{k=1}^{\min(n-i, n-j)} (\neg p(i,j) \lor \neg p(i+k, j+k))
 $$
 
 说明：

@@ -95,7 +95,8 @@
 - \$\bigwedge\_{k=1}^{\min(n-i, n-j)}\$ 从起点 \$(i,j)\$ 向右下走 \$k\$ 步，若 \$k > n-i\$ 则 \$i+k > n\$，越过了棋盘底边；若 \$k > n-j\$ 则 \$j+k > n\$，越过了棋盘右边；直到覆盖所有的对角线点。
 
 **演示：**
-![image](https://github.com/user-attachments/assets/7d92d311-d98a-41e2-b85d-49b61c321f95)
+
+<img src="https://github.com/user-attachments/assets/7d92d311-d98a-41e2-b85d-49b61c321f95" height="200">
 
 
 

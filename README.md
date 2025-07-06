@@ -30,6 +30,9 @@
 - $\lor$ 表示对于固定的某一行 $i$，从第 $j = 1$ 到 $j = n$ 的所有格子中，至少有一个位置 $p(i, j)$ 为真，即该行的某一列上放置了一个皇后；
 - ∧ 表示对所有 $n$ 行都必须满足上述条件，即每一行至少有一个皇后
 
+**演示：**
+
+<img src="https://github.com/user-attachments/assets/7d65c08a-117e-489d-9fc7-9d5b3c131abd" width="150">
 
 
 ### Q2：每一行**至多**有一个皇后
@@ -46,7 +49,9 @@
 - \$\bigwedge\_{j=1}^{n-1}\$ 枚举每一行内的除了最后一个因为没法比较的所有列索引；
 - \$\bigwedge\_{k=j+1}^{n}\$ 从该 \$j\$ 列索引的后面开始枚举第二个列索引 \$k\$，直到覆盖所有不同列对；
 
+**演示：**
 
+<img src="https://github.com/user-attachments/assets/b875bad5-8e5b-4377-a393-5cc9b21887c6" width="150">
 
 ### Q3：每一列**至多**有一个皇后
 
@@ -62,7 +67,9 @@
 - \$\bigwedge\_{i=1}^{n-1}\$ 枚举每一列内的除了最后一个因为没法比较的所有行索引；
 - \$\bigwedge\_{k=i+1}^{n}\$ 从该 \$i\$ 行索引的后面开始枚举第二个行索引 \$k\$，直到覆盖所有不同行对；
 
+**演示：**
 
+<img src="https://github.com/user-attachments/assets/a6b7c1d7-e91c-4da2-a2e1-5fa4732b109c" width="150">
 
 ### Q4：左下至右上 ↗ **斜线至多一个皇后**
 
@@ -78,6 +85,9 @@
 - \$\bigwedge\_{j=1}^{n-1}\$ 枚举起点列，要能往右走才有意义；
 - \$\bigwedge\_{k=1}^{\min(i-1, n-j)}\$ 往右上回溯 \$k\$ 步，如果 \$k > i-1\$，那么 \$i - k\$ 会变成 \$\leq 0\$，超出棋盘上边界；若 \$k > n - j\$，那么 \$k + j > n\$，超出右边界，min 确保不出边界，直到覆盖所有的对角线点。
 
+**演示：**
+
+<img src="https://github.com/user-attachments/assets/e15dc391-6fd8-4a85-af43-0b20d2bfdb7f" width="150">
 
 
 ### Q5：左上到右下 ↘ **斜线至多一个皇后**

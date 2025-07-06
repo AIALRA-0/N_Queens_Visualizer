@@ -26,7 +26,7 @@ class NQueensVisualizer:
 
         self.i = 0
 
-    def draw_board(self, highlight_row=None):
+    def draw_board(self, highlight_row=None, error_row=False):
         self.canvas.delete("all")
         for i in range(BOARD_SIZE):
             for j in range(BOARD_SIZE):
@@ -34,10 +34,12 @@ class NQueensVisualizer:
                 self.canvas.create_rectangle(
                     j * CELL_SIZE, i * CELL_SIZE, (j + 1) * CELL_SIZE, (i + 1) * CELL_SIZE, fill=color
                 )
+                # 红框 or 蓝框
                 if highlight_row is not None and i == highlight_row:
+                    outline_color = 'red' if error_row else 'blue'
                     self.canvas.create_rectangle(
                         j * CELL_SIZE, i * CELL_SIZE, (j + 1) * CELL_SIZE, (i + 1) * CELL_SIZE,
-                        outline='blue', width=3
+                        outline=outline_color, width=3
                     )
                 if self.board[i][j] == 1:
                     self.canvas.create_text(
@@ -57,13 +59,15 @@ class NQueensVisualizer:
         self.status_label.config(text=f"当前检查状态: i={i}")
         coord_clause = " ∨ ".join([f"p({i},{j})" for j in range(BOARD_SIZE)])
         self.formula_label.config(text=f"当前检查公式: {coord_clause}")
-
-        self.draw_board(highlight_row=i)
-
+    
+        # 检查行中是否至少有一个皇后
         if not any(self.board[i][j] == 1 for j in range(BOARD_SIZE)):
+            self.draw_board(highlight_row=i, error_row=True)
             messagebox.showerror("未通过", f"第 {i+1} 行没有皇后，不满足 Q1 条件！")
             return
-
+    
+        self.draw_board(highlight_row=i)
+    
         self.i += 1
         if self.i >= BOARD_SIZE:
             messagebox.showinfo("通过", "所有行均满足 Q1 条件：每行至少一个皇后。")

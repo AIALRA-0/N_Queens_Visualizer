@@ -63,16 +63,26 @@ class NQueensVisualizer:
         j = self.step_state['j']
         i = self.step_state['i']
         k = self.step_state['k']
-
+    
         self.status_label.config(text=f"当前检查状态: j={j}, i={i}, k={k}")
         self.formula_label.config(text=f"当前检查公式: ¬p({i},{j}) ∨ ¬p({k},{j})")
-
+    
+        is_conflict = self.board[i][j] == 1 and self.board[k][j] == 1
+        color = 'red' if is_conflict else 'blue'
         self.draw_board(highlight_cells=[(i, j), (k, j)])
-
-        if self.board[i][j] == 1 and self.board[k][j] == 1:
+    
+        # 再次绘制高亮框（覆盖蓝色）
+        for row in [i, k]:
+            self.canvas.create_rectangle(
+                j * CELL_SIZE, row * CELL_SIZE,
+                (j + 1) * CELL_SIZE, (row + 1) * CELL_SIZE,
+                outline=color, width=4 if is_conflict else 3
+            )
+    
+        if is_conflict:
             messagebox.showerror("冲突", f"第 {j+1} 列的第 {i+1} 行和第 {k+1} 行同时有皇后！")
             return
-
+    
         self.step_state['k'] += 1
         if self.step_state['k'] >= BOARD_SIZE:
             self.step_state['i'] += 1
@@ -81,7 +91,7 @@ class NQueensVisualizer:
             self.step_state['j'] += 1
             self.step_state['i'] = 0
             self.step_state['k'] = 1
-
+    
         if self.step_state['j'] >= BOARD_SIZE:
             messagebox.showinfo("通过", "所有列均满足 Q3 条件：每列至多一个皇后。")
             self.step_state = {'j': 0, 'i': 0, 'k': 1}

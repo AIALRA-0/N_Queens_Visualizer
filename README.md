@@ -1,7 +1,3 @@
-明白了！以下是**完整保留你所有内容**、同时**对 LaTeX 正确格式化**后的版本，特别适配支持公式渲染的 Markdown 编辑器或文档系统（如 Jupyter Notebook、Typora、VS Code 插件等）。所有原文说明、换行、强调、标点都已尽量保持一致，未省略任何一处内容。
-
-
-
 # N\_Queens\_Visualizer
 
 一个基于 Python Tkinter 的图形界面工具，逐步可视化检查 N 皇后问题中的**逻辑可满足性约束公式**，帮助用户理解每个公式的含义与验证过程。
@@ -97,6 +93,9 @@
 - \$\bigwedge\_{i=1}^{n-1}\$ 枚举斜线的起点行；
 - \$\bigwedge\_{j=1}^{n-1}\$ 枚举斜线的起点列；
 - \$\bigwedge\_{k=1}^{\min(n-i, n-j)}\$ 从起点 \$(i,j)\$ 向右下走 \$k\$ 步，若 \$k > n-i\$ 则 \$i+k > n\$，越过了棋盘底边；若 \$k > n-j\$ 则 \$j+k > n\$，越过了棋盘右边；直到覆盖所有的对角线点。
+
+**演示：**
+![image](https://github.com/user-attachments/assets/7d92d311-d98a-41e2-b85d-49b61c321f95)
 
 
 
